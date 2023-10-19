@@ -14,22 +14,23 @@ import com.LuisRicardo.CursoUdemy.services.UserService;
 
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResourse {
 
-	@Autowired
-	private UserService service;
-	
-	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
-		List<User> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+	@RequestMapping(value = "/users")
+	public class UserResourse {
+
+		@Autowired
+		private UserService service;
 		
-	}
-	
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findByiDEntity(@PathVariable Long id){
-		User obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
-	}
+		@GetMapping
+		public ResponseEntity<List<User>> findAll(){
+			List<User> list = service.findAll();
+			return ResponseEntity.ok().body(list);
+			
+		}
+		
+		@GetMapping(value = "/{id}")
+		public ResponseEntity<User> findByiDEntity(@PathVariable Long id){
+			User obj = service.findById(id);
+			return ResponseEntity.ok().body(obj);
+		}
 }
